@@ -11,7 +11,7 @@ int main()
     int i, j, tam, repeat = 1;
     do
     {
-        printf("Digite a quantidade de vertices que deseja alocar (máximo 20!): ");
+        printf("Digite a quantidade de vertices que deseja alocar (máximo 20 e sem numeros negativos!): ");
         scanf("%d", &tam);
 
         if (tam > 20 || tam < 0)
@@ -26,23 +26,23 @@ int main()
             {
                 for (j = 0; j < tam; j++)
                 {
-                    printf("\nDigite o peso do vértice linha %d coluna %d: ", i+1, j+1);
+                    printf("\nDigite o peso do vértice linha %d coluna %d: ", i + 1, j + 1);
                     scanf("%d", &matriz[i][j]);
                 }
             }
             printf("     ");
             for (i = 0; i < tam; i++)
             {
-                printf(" %d | ", i+1);
+                printf(" %d | ", i + 1);
             }
-            
+
             for (i = 0; i < tam; i++)
-            {   
-                
+            {
+
                 printf("\n");
-                printf("%d -", i+1);
+                printf("%d -", i + 1);
                 for (j = 0; j < tam; j++)
-                {   
+                {
                     printf("   %d ", matriz[i][j]);
                 }
             }
