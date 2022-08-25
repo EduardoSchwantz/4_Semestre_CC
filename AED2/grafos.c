@@ -8,6 +8,7 @@ int matriz[maxTam][maxTam];
 void imprimir(int tam);
 void addPeso(int tam);
 void dijkstra(int tam);
+void setMatriz(int tam);
 int main()
 {
     SetConsoleOutputCP(65001);
@@ -19,20 +20,14 @@ int main()
         printf("Digite a quantidade de pontos deseja no grafo. (máximo 20 e sem numeros negativos!): ");
         scanf("%d", &tam);
     }
-
-    for (i = 0; i < tam; i++)
-    {
-        for (j = 0; j < tam; j++)
-        {
-            matriz[i][j] = 0;
-        }
-    }
+    setMatriz(tam);
     for (;;)
     {
         printf("\n\n\n             Selecione uma opção:             \n");
         printf(" 1 - Adicionar peso a uma aresta.\n");
-        printf(" 2 - imprimir\n");
-        printf(" 3 - Algoritmo de Dijkstra");
+        printf(" 2 - imprimir.\n");
+        printf(" 3 - Algoritmo de Dijkstra.");
+        printf(" 4 - Zerar Matriz.");
         printf(" 0 - Sair.\n");
         printf("\n             Digite uma opção:             \n");
         scanf("%d", &option);
@@ -45,8 +40,11 @@ int main()
         case 2:
             imprimir(tam);
             break;
-            case 3:
-
+        case 3:
+            dijkstra(tam);
+            break;
+        case 4:
+            setMatriz(tam);
             break;
         case 0:
             exit(0);
@@ -204,5 +202,16 @@ void dijkstra(int tam)
         } while (chegada != inicio);
 
         printf("\n");
+    }
+}
+void setMatriz(int tam)
+{
+    int i, j;
+    for (i = 0; i < tam; i++)
+    {
+        for (j = 0; j < tam; j++)
+        {
+            matriz[i][j] = 0;
+        }
     }
 }
