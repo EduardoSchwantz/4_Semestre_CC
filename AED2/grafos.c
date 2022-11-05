@@ -26,8 +26,8 @@ int main()
         printf("\n\n\n             Selecione uma opção:             \n");
         printf(" 1 - Adicionar peso a uma aresta.\n");
         printf(" 2 - imprimir.\n");
-        printf(" 3 - Algoritmo de Dijkstra.");
-        printf(" 4 - Zerar Matriz.");
+        printf(" 3 - Algoritmo de Dijkstra.\n");
+        printf(" 4 - Zerar Matriz.\n");
         printf(" 0 - Sair.\n");
         printf("\n             Digite uma opção:             \n");
         scanf("%d", &option);
