@@ -14,7 +14,7 @@ int main()
     SetConsoleOutputCP(65001);
     system("clear||cls");
     printf("Eduardo Schwantz.\nCecilia Botelho.\nPedro Henrique Lima de Mesquita\n");
-    int i, j, tam = 0, option;
+    int tam = 0, option;
     while (tam <= 0 || tam > maxTam)
     {
         printf("Digite a quantidade de pontos deseja no grafo. (máximo 20 e sem numeros negativos!): ");
