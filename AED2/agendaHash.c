@@ -6,7 +6,7 @@
 
 typedef struct
 {
-    int chave;
+    int matricula;
     char nome[50];
     int idade, ddd, telefone;
 } Pessoa;
@@ -29,14 +29,14 @@ Pessoa criarPessoa();
 void print(Pessoa p);
 Lista *criarLista();
 void inserirInicio(Pessoa p, Lista *lista);
-No *buscarNo(int chave, No *inicio);
+No *buscarNo(int matricula, No *inicio);
 void imprimirLista(No *inicio);
 void inicializar();
-int hashing(int chave);
+int hashing(int matricula);
 void inserirTabela();
-Pessoa *buscarPessoaTabela(int chave);
+Pessoa *buscarPessoaTabela(int matricula);
 void imprimirTabela();
-No *remover(Lista *lista, int chave);
+No *remover(Lista *lista, int matricula);
 
 int main()
 {
@@ -46,7 +46,7 @@ int main()
     printf("\n\tIntegrantes do Grupo:");
     printf("\n\tEDUARDO SCHWANTZ.\n\tCECILIA BOTELHO.\n\tPEDRO Henrique Lima de Mesquita\n\n");
     printf("\tProposta do Programa: Agenda de lista encadeada, utilizando o método hashing para inserção, busca e remoção.\n\n");
-    int option, exit = 1, chave;
+    int option, exit = 1, matricula;
     Pessoa *p;
     No *removido;
     inicializar();
@@ -69,26 +69,26 @@ int main()
             inserirTabela();
             break;
         case 2:
-            printf("\nDigite a chave a ser Buscada: ");
-            scanf("%d", &chave);
-            p = buscarPessoaTabela(chave);
+            printf("\nDigite a matricula a ser Buscada: ");
+            scanf("%d", &matricula);
+            p = buscarPessoaTabela(matricula);
             if (p)
             {
                 printf("\n\tImprimindo Dados...\n\n");
-                printf("\tChave do Contato:%d\n\tNome:%s\n\tIdade:%d\n\tTelefone:(%d)%d\n", p->chave, p->nome, p->idade, p->ddd, p->telefone);
+                printf("\tMatricula do Contato:%d\n\tNome:%s\n\tIdade:%d\n\tTelefone:(%d)%d\n", p->matricula, p->nome, p->idade, p->ddd, p->telefone);
             }
             else
                 printf("\n\n\tPessoa não encontrada!\n");
 
             break;
         case 3:
-            printf("\nDigite a chave a ser Removida: ");
-            scanf("%d", &chave);
-            removido = remover(tabela[hashing(chave)], chave);
+            printf("\nDigite a matricula a ser Removida: ");
+            scanf("%d", &matricula);
+            removido = remover(tabela[hashing(matricula)], matricula);
             if (removido)
             {
                 printf("\n\tContato: \n");
-                printf("\tChave do Contato:%d\n\tNome:%s\n\tIdade:%d\n\tTelefone:(%d)%d\n", removido->pessoa.chave, removido->pessoa.nome, removido->pessoa.idade, removido->pessoa.ddd ,removido->pessoa.telefone);
+                printf("\tMatricula do Contato:%d\n\tNome:%s\n\tIdade:%d\n\tTelefone:(%d)%d\n", removido->pessoa.matricula, removido->pessoa.nome, removido->pessoa.idade, removido->pessoa.ddd ,removido->pessoa.telefone);
                 printf("\n\tRemovido com Sucesso!!\n\n");
                 free(removido);
             }
@@ -113,8 +113,8 @@ int main()
 Pessoa criarPessoa()
 {
     Pessoa p;
-    printf("\nDigite a chave do contato: ");
-    scanf("%d", &p.chave);
+    printf("\nDigite a matricula do contato: ");
+    scanf("%d", &p.matricula);
     printf("\nDigite o Nome do contato: ");
     getchar();
     scanf("%50[^\n]", p.nome);
@@ -128,7 +128,7 @@ Pessoa criarPessoa()
 
 void print(Pessoa p)
 {
-    printf("\n\tChave do Contato: %d\n\tNome: %s\n\tIdade: %d\n\tTelefone: (%d) %d\n", p.chave, p.nome, p.idade, p.ddd, p.telefone);
+    printf("\n\tMatricula do Contato: %d\n\tNome: %s\n\tIdade: %d\n\tTelefone: (%d) %d\n", p.matricula, p.nome, p.idade, p.ddd, p.telefone);
 }
 
 Lista *criarLista()
@@ -148,17 +148,17 @@ void inserirInicio(Pessoa p, Lista *lista)
     lista->tam++;
 }
 
-No *buscarNo(int chave, No *inicio)
+No *buscarNo(int matricula, No *inicio)
 {
 
     while (inicio != NULL)
     {
-        if (inicio->pessoa.chave == chave)
+        if (inicio->pessoa.matricula == matricula)
             return inicio;
         else
             inicio = inicio->proximo;
     }
-    return NULL; // chave não encontrada
+    return NULL; // matricula não encontrada
 }
 
 void imprimirLista(No *inicio)
@@ -177,22 +177,22 @@ void inicializar()
         tabela[i] = criarLista();
 }
 
-int hashing(int chave)
+int hashing(int matricula)
 {
-    return chave % M;
+    return matricula % M;
 }
 
 void inserirTabela()
 {
     Pessoa pes = criarPessoa();
-    int indice = hashing(pes.chave);
+    int indice = hashing(pes.matricula);
     inserirInicio(pes, tabela[indice]);
 }
 
-Pessoa *buscarPessoaTabela(int chave)
+Pessoa *buscarPessoaTabela(int matricula)
 {
-    int indice = hashing(chave);
-    No *no = buscarNo(chave, tabela[indice]->inicio);
+    int indice = hashing(matricula);
+    No *no = buscarNo(matricula, tabela[indice]->inicio);
     if (no)
         return &no->pessoa;
     else
@@ -219,12 +219,12 @@ void imprimirTabela(Lista *lista)
         printf("\n\t\tLista de contatos está vázia!!\n");
     }
 }
-No *remover(Lista *lista, int chave)
+No *remover(Lista *lista, int matricula)
 {
     No *aux, *remover = NULL;
     if (lista->inicio)
     {
-        if (lista->inicio->pessoa.chave == chave)
+        if (lista->inicio->pessoa.matricula == matricula)
         {
             remover = lista->inicio;
             lista->inicio = remover->proximo;
@@ -233,7 +233,7 @@ No *remover(Lista *lista, int chave)
         else
         {
             aux = lista->inicio;
-            while (aux->proximo && aux->proximo->pessoa.chave != chave)
+            while (aux->proximo && aux->proximo->pessoa.matricula != matricula)
                 aux = aux->proximo;
             if (aux->proximo)
             {
