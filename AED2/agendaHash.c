@@ -88,7 +88,9 @@ int main()
             if (removido)
             {
                 printf("\n\tContato: \n");
-                printf("\tMatricula do Contato:%d\n\tNome:%s\n\tIdade:%d\n\tTelefone:(%d)%d\n", removido->pessoa.matricula, removido->pessoa.nome, removido->pessoa.idade, removido->pessoa.ddd ,removido->pessoa.telefone);
+                printf("\tMatricula do Contato:%d\n\tNome:%s\n\tIdade:%d\n\tTelefone:(%d)%d\n", 
+                removido->pessoa.matricula, removido->pessoa.nome, removido->pessoa.idade,
+                removido->pessoa.ddd ,removido->pessoa.telefone);
                 printf("\n\tRemovido com Sucesso!!\n\n");
                 free(removido);
             }
@@ -110,6 +112,28 @@ int main()
     return 0;
 }
 
+void inicializar()
+{
+    int i;
+    for (i = 0; i < M; i++)
+        tabela[i] = criarLista();
+}
+
+Lista *criarLista()
+{
+    Lista *l = malloc(sizeof(Lista));
+    l->inicio = NULL;
+    l->tam = 0;
+    return l;
+}
+
+void inserirTabela()
+{
+    Pessoa pes = criarPessoa();
+    int indice = hashing(pes.matricula);
+    inserirInicio(pes, tabela[indice]);
+}
+
 Pessoa criarPessoa()
 {
     Pessoa p;
@@ -126,17 +150,9 @@ Pessoa criarPessoa()
     return p;
 }
 
-void print(Pessoa p)
+int hashing(int matricula)
 {
-    printf("\n\tMatricula do Contato: %d\n\tNome: %s\n\tIdade: %d\n\tTelefone: (%d) %d\n", p.matricula, p.nome, p.idade, p.ddd, p.telefone);
-}
-
-Lista *criarLista()
-{
-    Lista *l = malloc(sizeof(Lista));
-    l->inicio = NULL;
-    l->tam = 0;
-    return l;
+    return matricula % M;
 }
 
 void inserirInicio(Pessoa p, Lista *lista)
@@ -146,6 +162,16 @@ void inserirInicio(Pessoa p, Lista *lista)
     no->proximo = lista->inicio;
     lista->inicio = no;
     lista->tam++;
+}
+
+Pessoa *buscarPessoaTabela(int matricula)
+{
+    int indice = hashing(matricula);
+    No *no = buscarNo(matricula, tabela[indice]->inicio);
+    if (no)
+        return &no->pessoa;
+    else
+        return NULL;
 }
 
 No *buscarNo(int matricula, No *inicio)
@@ -161,64 +187,6 @@ No *buscarNo(int matricula, No *inicio)
     return NULL; // matricula não encontrada
 }
 
-void imprimirLista(No *inicio)
-{
-    while (inicio != NULL)
-    {
-        print(inicio->pessoa);
-        inicio = inicio->proximo;
-    }
-}
-
-void inicializar()
-{
-    int i;
-    for (i = 0; i < M; i++)
-        tabela[i] = criarLista();
-}
-
-int hashing(int matricula)
-{
-    return matricula % M;
-}
-
-void inserirTabela()
-{
-    Pessoa pes = criarPessoa();
-    int indice = hashing(pes.matricula);
-    inserirInicio(pes, tabela[indice]);
-}
-
-Pessoa *buscarPessoaTabela(int matricula)
-{
-    int indice = hashing(matricula);
-    No *no = buscarNo(matricula, tabela[indice]->inicio);
-    if (no)
-        return &no->pessoa;
-    else
-        return NULL;
-}
-
-void imprimirTabela(Lista *lista)
-{
-    int i, contador = 0;
-    for (i = 0; i < M; i++)
-    {
-        if (tabela[i]->tam != 0)
-        {
-            printf("\n%d\tLista tamanho: %d\n", i, tabela[i]->tam);
-            imprimirLista(tabela[i]->inicio);
-        }
-        else
-        {
-            contador++;
-        }
-    }
-    if (contador == M)
-    {
-        printf("\n\t\tLista de contatos está vázia!!\n");
-    }
-}
 No *remover(Lista *lista, int matricula)
 {
     No *aux, *remover = NULL;
@@ -244,4 +212,39 @@ No *remover(Lista *lista, int matricula)
         }
     }
     return remover;
+}
+
+void imprimirTabela(Lista *lista)
+{
+    int i, contador = 0;
+    for (i = 0; i < M; i++)
+    {
+        if (tabela[i]->tam != 0)
+        {
+            printf("\n%d\tLista tamanho: %d\n", i, tabela[i]->tam);
+            imprimirLista(tabela[i]->inicio);
+        }
+        else
+        {
+            contador++;
+        }
+    }
+    if (contador == M)
+    {
+        printf("\n\t\tLista de contatos está vázia!!\n");
+    }
+}
+
+void imprimirLista(No *inicio)
+{
+    while (inicio != NULL)
+    {
+        print(inicio->pessoa);
+        inicio = inicio->proximo;
+    }
+}
+
+void print(Pessoa p)
+{
+    printf("\n\tMatricula do Contato: %d\n\tNome: %s\n\tIdade: %d\n\tTelefone: (%d) %d\n", p.matricula, p.nome, p.idade, p.ddd, p.telefone);
 }
