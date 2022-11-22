@@ -17,8 +17,8 @@ values
 select * from tbusuarios;
 
 create table tbclientes(
-idcli int primary key,
-nomecli varchar(50) not null,
+idcli int primary key auto_increment,
+nomecli varchar(50) not null unique,
 endcli varchar(100),
 fonecli varchar(50) not null,
 emailcli varchar(50)
@@ -27,8 +27,9 @@ desc tbclientes;
 
 insert into tbclientes(nomecli, endcli, fonecli, emailcli)
 values
-('Linus Torvalds', 'Rua tux, 2015', '9999-9999', 'linus@linux.com');
+('Linus Totbclientesrvalds', 'Rua tux, 2015', '9999-9999', 'linus@linux.com');
 select * from tbclientes;
+select idcli as id, nomecli as nome, endcli as endereço, fonecli as fone, emailcli as email from tbclientes;
 
 create table tbos(
 os int primary key auto_increment,
@@ -62,3 +63,4 @@ add column perfil varchar(20) not null;
 update tbusuarios set perfil = 'admin' where iduser = 1;
 update tbusuarios set perfil = 'user' where iduser = 2;
 update tbusuarios set perfil = 'user' where iduser = 3;
+alter table tbclientes add unique(nomecli);

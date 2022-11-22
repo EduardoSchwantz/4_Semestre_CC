@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package br.com.servicosUf.telas;
 
 import java.sql.*;
@@ -20,9 +16,9 @@ public class TelaLogin extends javax.swing.JFrame {
         initComponents();
         conexao = ModuloConexao.conector();
         if (conexao != null) {
-            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/servicosUf/icones/dbok.png")));
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/servicosuf/icones/dbok.png")));
         } else {
-            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/servicosUf/icones/dberror.png")));
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/servicosuf/icones/dberror.png")));
         }
     }
 

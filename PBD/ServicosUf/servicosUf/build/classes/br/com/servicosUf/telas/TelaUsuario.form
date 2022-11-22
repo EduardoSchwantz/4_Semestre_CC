@@ -49,13 +49,13 @@
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtUsuId" min="-2" pref="112" max="-2" attributes="0"/>
-                          <Component id="txtUsuNome" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                          <Component id="txtUsuLogin" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="cboUsuPerfil" alignment="0" pref="200" max="32767" attributes="0"/>
                               <Component id="txtUsuSenha" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cboUsuPerfil" alignment="0" pref="200" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="txtUsuLogin" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                          <Component id="txtUsuNome" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                          <Component id="txtUsuId" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
