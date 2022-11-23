@@ -19,6 +19,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+
     }
 
     /**
@@ -117,6 +118,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menIniVen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_DOWN_MASK));
         menIniVen.setText("Iniciar venda");
+        menIniVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menIniVenActionPerformed(evt);
+            }
+        });
         MenVen.add(menIniVen);
 
         Menu.add(MenVen);
@@ -230,6 +236,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cliente.setVisible(true);
         desktop.add(cliente);
     }//GEN-LAST:event_MenCadCliActionPerformed
+
+    private void menIniVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menIniVenActionPerformed
+        TelaVendas vendas = new TelaVendas();
+        vendas.setVisible(true);
+        desktop.add(vendas);
+
+
+    }//GEN-LAST:event_menIniVenActionPerformed
 
     /**
      * @param args the command line arguments

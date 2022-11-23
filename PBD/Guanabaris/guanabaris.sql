@@ -1,26 +1,22 @@
 create database guanabaris;
 use guanabaris;
-
 create table tbusuarios(
 iduser int primary key not null auto_increment,
 usuario varchar(50) not null,
 login varchar(15) not null unique,
 senha varchar(15) not null
 ); 
-desc tbusuarios;
 insert into tbusuarios(iduser, usuario, login, senha)
 values
 (default, 'Administrador', 'admin', 'admin'),
 (default, 'Eduardo Schwantz', 'eduardoschwantz', '1234'),
 (default, 'Cecilia Botelho', 'ceciliabotelho', '1234');
 select * from tbusuarios;
-
 alter table tbusuarios
 add column perfil varchar(20) not null;
 update tbusuarios set perfil = 'admin' where iduser = 1;
 update tbusuarios set perfil = 'user' where iduser = 2;
 update tbusuarios set perfil = 'user' where iduser = 3;
-
 create table tbclientes(
 idcli int primary key auto_increment,
 nomecli varchar(50) not null,

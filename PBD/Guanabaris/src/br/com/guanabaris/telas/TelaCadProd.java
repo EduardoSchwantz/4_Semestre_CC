@@ -217,7 +217,6 @@ public class TelaCadProd extends javax.swing.JInternalFrame {
                 "codProduto", "codBarras", "nomeProduto", "preço", "estoque"
             }
         ));
-        tblProdutos.setFocusable(false);
         tblProdutos.getTableHeader().setReorderingAllowed(false);
         tblProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
