@@ -62,7 +62,6 @@ public class TelaVendas extends javax.swing.JFrame {
             total = total + Double.parseDouble(txtPrecoProd.getText());
             DecimalFormat df = new DecimalFormat("0.##");
             String valor = df.format(total);
-            JOptionPane.showMessageDialog(null, valor);
             valorTotal.setText(valor);
             limpar();
         } else {
