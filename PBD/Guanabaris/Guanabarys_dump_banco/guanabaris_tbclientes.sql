@@ -16,31 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbusuarios`
+-- Table structure for table `tbclientes`
 --
 
-DROP TABLE IF EXISTS `tbusuarios`;
+DROP TABLE IF EXISTS `tbclientes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbusuarios` (
-  `iduser` int NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(50) NOT NULL,
-  `login` varchar(15) NOT NULL,
-  `senha` varchar(15) NOT NULL,
-  `perfil` varchar(20) NOT NULL,
-  PRIMARY KEY (`iduser`),
-  UNIQUE KEY `login` (`login`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `tbclientes` (
+  `idcli` int NOT NULL AUTO_INCREMENT,
+  `nomecli` varchar(50) NOT NULL,
+  `cpfcli` varchar(12) NOT NULL,
+  `endcli` varchar(100) DEFAULT NULL,
+  `fonecli` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`idcli`),
+  UNIQUE KEY `cpfcli` (`cpfcli`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbusuarios`
+-- Dumping data for table `tbclientes`
 --
 
-LOCK TABLES `tbusuarios` WRITE;
-/*!40000 ALTER TABLE `tbusuarios` DISABLE KEYS */;
-INSERT INTO `tbusuarios` VALUES (1,'Administrador','admin','admin','admin'),(2,'Eduardo Schwantz','eduardoschwantz','1234','user'),(3,'Cecilia Botelho','ceciliabotelho','1234','user');
-/*!40000 ALTER TABLE `tbusuarios` ENABLE KEYS */;
+LOCK TABLES `tbclientes` WRITE;
+/*!40000 ALTER TABLE `tbclientes` DISABLE KEYS */;
+INSERT INTO `tbclientes` VALUES (1,'Eduardo Schwantz','04476649050','Rua almirante tamandaré, 498','9999-9999'),(3,'Cecilia Botelho','654654654','','');
+/*!40000 ALTER TABLE `tbclientes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-23 16:19:11
+-- Dump completed on 2022-11-28 19:05:42

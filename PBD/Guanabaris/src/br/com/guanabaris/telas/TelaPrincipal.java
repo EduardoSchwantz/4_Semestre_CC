@@ -44,6 +44,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCadUsu = new javax.swing.JMenuItem();
         MenVen = new javax.swing.JMenu();
         menIniVen = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         menAju = new javax.swing.JMenu();
         menAjuSob = new javax.swing.JMenuItem();
         menOpc = new javax.swing.JMenu();
@@ -124,6 +125,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         MenVen.add(menIniVen);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem1.setText("vendas realizadas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        MenVen.add(jMenuItem1);
 
         Menu.add(MenVen);
 
@@ -242,8 +252,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         vendas.setVisible(true);
         desktop.add(vendas);
 
-
     }//GEN-LAST:event_menIniVenActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       TelaRelatorio relatorio = new TelaRelatorio();
+       relatorio.setVisible(true);
+        desktop.add(relatorio);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +303,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lblData;
     public static javax.swing.JLabel lblUsuario;
     private javax.swing.JMenu menAju;

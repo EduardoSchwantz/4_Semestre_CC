@@ -40,7 +40,7 @@ CREATE TABLE `tbprodutos` (
 
 LOCK TABLES `tbprodutos` WRITE;
 /*!40000 ALTER TABLE `tbprodutos` DISABLE KEYS */;
-INSERT INTO `tbprodutos` VALUES (1,100,'Lava louça limpol neutro',3.49,50),(2,200,'Salgadinho',3.99,50),(3,300,'Bolacha',6.99,50);
+INSERT INTO `tbprodutos` VALUES (1,100,'Lava louça limpol neutro',3.49,37),(2,200,'Salgadinho',3.99,30),(3,300,'Bolacha',6.99,26);
 /*!40000 ALTER TABLE `tbprodutos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-23 16:19:11
+-- Dump completed on 2022-11-28 19:05:42

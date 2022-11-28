@@ -44,9 +44,25 @@ values
 (200, 'Salgadinho', 5.49, 30);
 insert into tbprodutos(codbarra, nomeprod, precoprod, quantprod)
 values
-(300, 'BolacidProdha', 9.99, 24);
+(300, 'Bolacha', 9.99, 24);
 desc tbprodutos;
 select * from tbprodutos;
 select idProd as codProduto, codbarra as codBarras, nomeprod as nomeProduto, precoprod as preco, quantprod as estoque;
 
+create table tbvendas(
+venda int primary key auto_increment,
+data_venda timestamp default current_timestamp,
+produtos varchar(300) not null,
+valor decimal(10,2) not null,
+vendedor varchar(30) not null, 
+idcli int not null,
+foreign key(idcli) references tbclientes(idcli)
+);
+desc tbvendas;
+select * from tbvendas;
+insert into tbvendas(produtos, vendedor, valor, idcli) values('bolacha R$5,99', 'Administrador', 5.99, '1');
 
+select tbvendas.data_venda, tbvendas.produtos, tbvendas.valor, tbvendas.vendedor, tbclientes.nomecli, tbclientes.cpfcli, tbclientes.endcli, tbclientes.fonecli from tbclientes join tbvendas
+on tbvendas.idcli = tbclientes.idcli
+where tbvendas.venda = 3;
+select tbvendas.valor from tbclientes join tbvendas on tbvendas.idcli = tbclientes.idcli where tbvendas.venda = 5;
