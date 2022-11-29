@@ -50,10 +50,10 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
                 txtProdutos.setText(rs.getString(2));
                 txtValor.setText(rs.getString(3));
                 txtVendedor.setText(rs.getString(4));
-                txtCpf.setText(rs.getString(5));
-                txtTelefone.setText(rs.getString(6));
+                txtNomeCli.setText(rs.getString(5));
+                txtCpf.setText(rs.getString(6));
                 txtEnd.setText(rs.getString(7));
-                txtNomeCli.setText(rs.getString(8));
+                txtTelefone.setText(rs.getString(8));                
             }
 
         } catch (Exception e) {
@@ -134,7 +134,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
                 {null, null, null}
             },
             new String [] {
-                "Vendedor", "idCliente", "Valor (R$)"
+                "Vendedor", "venda", "Valor (R$)"
             }
         ) {
             boolean[] canEdit = new boolean [] {

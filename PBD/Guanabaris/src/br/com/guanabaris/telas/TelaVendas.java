@@ -584,6 +584,7 @@ public class TelaVendas extends javax.swing.JFrame {
         tblCli.setEnabled(true);
         txtIdCli.setText(null);
         txtNomeCli.setText(null);
+        ((DefaultTableModel) tblCli.getModel()).setRowCount(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
