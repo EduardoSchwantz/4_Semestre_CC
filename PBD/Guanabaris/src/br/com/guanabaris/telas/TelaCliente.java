@@ -96,7 +96,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     }
 
     private void remover() {
-        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este produto,?", "Atenção", JOptionPane.YES_NO_OPTION);
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este cliente,?", "Atenção", JOptionPane.YES_NO_OPTION);
         if (confirma == JOptionPane.YES_OPTION) {
             String sql = "delete from tbclientes where idcli=?";
             try {
